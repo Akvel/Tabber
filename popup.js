@@ -119,5 +119,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-  Tabber.refresh();
+  //Tabber.refresh();
 });
