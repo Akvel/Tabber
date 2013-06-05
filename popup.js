@@ -21,13 +21,17 @@ var closeTabByHost = function(host) {
         ids.push(tabs[i].id);
       }
     }
-    chrome.tabs.remove(ids, null);
-    Tabber.refresh();
+    chrome.tabs.remove(ids, function(tabs){
+       Tabber.refresh();
+    });
+    
+   
   });
 };
 
 var Tabber = {
   refresh : function() {
+    console.log("refresh");
     var div = document.getElementById("hostDiv");
     chrome.tabs
         .query(
@@ -119,5 +123,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-  //Tabber.refresh();
+  Tabber.refresh();
 });

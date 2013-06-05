@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Tabber",
-  "description": "This extension can help you quickly close tabs by selected site name.",
-  "version": "1.2",
+  "description": "Tabber can help you quickly close tabs by selected sitename.",
+  "version": "1.5",
 
   "permissions": [
     "tabs"
