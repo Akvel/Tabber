@@ -3,7 +3,7 @@
 
   "name": "Tabber",
   "description": "Tabber can help you quickly close tabs by selected sitename.",
-  "version": "1.5",
+  "version": "1.6",
 
   "permissions": [
     "tabs"
