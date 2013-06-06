@@ -21,17 +21,22 @@ var closeTabByHost = function(host) {
         ids.push(tabs[i].id);
       }
     }
-    chrome.tabs.remove(ids, function(tabs){
-       Tabber.refresh();
+
+
+    chrome.tabs.remove(ids, function (){
+      Tabber.refresh();
     });
     
-   
   });
 };
 
+var myListner = function() {
+                          closeTabByHost(this
+                              .getAttribute("data-host"));
+                        }
+
 var Tabber = {
   refresh : function() {
-    console.log("refresh");
     var div = document.getElementById("hostDiv");
     chrome.tabs
         .query(
@@ -105,13 +110,8 @@ var Tabber = {
                   .getElementsByClassName("hovered");
 
               for ( var i = 0; i < elements.length; i++) {
-                elements[i]
-                    .addEventListener(
-                        'click',
-                        function() {
-                          closeTabByHost(this
-                              .getAttribute("data-host"));
-                        });
+                elements[i].removeEventListener('click', myListner);
+                elements[i].addEventListener('click', myListner);
               }
             });
   },
