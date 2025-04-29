@@ -1,4 +1,4 @@
-// Copyright (c) 2013 Valeriy Akitsev
+// Copyright (c) 2013 akvel
 
 var query = {
   "active" : false
@@ -14,14 +14,13 @@ var getHost = function(uri) {
 };
 
 var closeTabByHost = function(host) {
-  chrome.tabs.query(query, function(tabs) { /* no close current */
+  chrome.tabs.query(query, function(tabs) { /* skip current active tab */
     ids = [];
     for ( var i = 0; i < tabs.length; i++) {
       if (host == getHost(tabs[i].url)) {
         ids.push(tabs[i].id);
       }
     }
-
 
     chrome.tabs.remove(ids, function (){
       Tabber.refresh();
